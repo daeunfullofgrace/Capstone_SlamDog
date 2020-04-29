@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4909b6e0-e028-4a7e-8b90-b60c1fdefea7" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1avlpcVNOPpB84F0IzIGueUBQHG" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/python_dir/IntroductionOfAI" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4909b6e0-e028-4a7e-8b90-b60c1fdefea7" name="Default Changelist" comment="" />
+      <created>1587624131341</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1587624131341</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="325" y="306" width="424" height="482" key="FileChooserDialogImpl" timestamp="1587703314839">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state x="325" y="306" width="424" height="482" key="FileChooserDialogImpl/0.1080.1920.1080/65.24.1855.1056@65.24.1855.1056" timestamp="1587703314839" />
+  </component>
+</project>
