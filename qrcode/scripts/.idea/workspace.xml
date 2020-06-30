@@ -1,21 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4909b6e0-e028-4a7e-8b90-b60c1fdefea7" name="Default Changelist" comment="" />
+    <list default="true" id="4909b6e0-e028-4a7e-8b90-b60c1fdefea7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../example+localization/scripts/.idea/scripts.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data_loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qrcode_scanner_back.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../turtlebot_custom/src/custom_teleop.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../catkin_ws/src/models/qrcode_box_609/model.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../catkin_ws/src/models/qrcode_box_609/model.sdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../catkin_ws/src/models/qrcode_box_609/qrcode_box_609.material" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../catkin_ws/src/models/qrcode_box_609/txt_609_qrcode.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../catkin_ws/src/models/qrcode_box_611/model.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../catkin_ws/src/models/qrcode_box_611/model.sdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../catkin_ws/src/models/qrcode_box_611/qrcode_box_611.material" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../catkin_ws/src/models/qrcode_box_611/txt_611_qrcode.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../catkin_ws/src/turtlebot_custom/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../catkin_ws/src/turtlebot_custom/launch/custom_slam.launch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../catkin_ws/src/turtlebot_custom/package.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qrcode_data_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/qrcode_data_server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qrcode_scanner.py" beforeDir="false" afterPath="$PROJECT_DIR$/qrcode_scanner.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
   <component name="ProjectId" id="1avlpcVNOPpB84F0IzIGueUBQHG" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/python_dir/IntroductionOfAI" />
+  </component>
+  <component name="RunManager">
+    <configuration name="data_loader" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="script" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_loader.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.data_loader" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -31,9 +83,31 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="325" y="306" width="424" height="482" key="FileChooserDialogImpl" timestamp="1587703314839">
+    <state x="652" y="344" width="678" height="388" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1590399106436">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
+    <state x="652" y="344" width="678" height="388" key="#com.intellij.fileTypes.FileTypeChooser/0.1080.1920.1080/65.24.1855.1056@65.24.1855.1056" timestamp="1590399106436" />
+    <state x="325" y="306" width="424" height="482" key="FileChooserDialogImpl" timestamp="1591547398783">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state x="269" y="1368" key="FileChooserDialogImpl/0.1080.1920.1080/65.24.1855.1056@0.1080.1920.1080" timestamp="1590484133599" />
     <state x="325" y="306" width="424" height="482" key="FileChooserDialogImpl/0.1080.1920.1080/65.24.1855.1056@65.24.1855.1056" timestamp="1587703314839" />
+    <state x="325" y="306" width="424" height="482" key="FileChooserDialogImpl/65.24.1855.1056@65.24.1855.1056" timestamp="1591547398783" />
+    <state width="1830" height="296" key="GridCell.Tab.0.bottom" timestamp="1591283233265">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state width="1830" height="296" key="GridCell.Tab.0.bottom/0.1080.1920.1080/65.24.1855.1056@65.24.1855.1056" timestamp="1591283233265" />
+    <state width="1830" height="296" key="GridCell.Tab.0.center" timestamp="1591283233265">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state width="1830" height="296" key="GridCell.Tab.0.center/0.1080.1920.1080/65.24.1855.1056@65.24.1855.1056" timestamp="1591283233265" />
+    <state width="1830" height="296" key="GridCell.Tab.0.left" timestamp="1591283233265">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state width="1830" height="296" key="GridCell.Tab.0.left/0.1080.1920.1080/65.24.1855.1056@65.24.1855.1056" timestamp="1591283233265" />
+    <state width="1830" height="296" key="GridCell.Tab.0.right" timestamp="1591283233265">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state width="1830" height="296" key="GridCell.Tab.0.right/0.1080.1920.1080/65.24.1855.1056@65.24.1855.1056" timestamp="1591283233265" />
   </component>
 </project>

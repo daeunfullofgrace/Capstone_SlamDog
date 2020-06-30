@@ -2,6 +2,8 @@
 
 from __future__ import print_function
 
+from std_msgs.msg import Int32
+
 import rospy
 import cv2
 import qrcode_data_server
@@ -10,29 +12,6 @@ import pyzbar.pyzbar as pyzbar
 from pyasn1.compat.octets import null
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
-
-is_btn_clicked = 0
-
-
-def is_btn_clicked():
-    pass
-
-
-def write_file(input1, input2):
-    print("file save")
-    f = open("qr_code_data.txt", 'w')
-
-    for i in range(0, len(input1)):
-        data = str(input1[i]) + "\n"
-        f.write(data)
-
-        for j in range(0, 6):
-            data = str(input2[i][j]) + "\n"
-
-            f.write(data)
-
-    print("saved!")
-    f.close()
 
 
 class QRcodeScanner:
@@ -43,6 +22,8 @@ class QRcodeScanner:
 
     def __init__(self):
 
+        rospy.loginfo("start!")
+
         self.bridge = CvBridge()
         self.image_received = False
 
@@ -50,22 +31,12 @@ class QRcodeScanner:
         img_topic = "/camera/rgb/image_raw"
         rospy.Subscriber(img_topic, Image, self.callback)
 
-        rospy.loginfo("start")
+        save_topic = "/ros_tutorial_msg"
+        rospy.Subscriber(save_topic, Int32, self.write_file)
 
-        while True:
+        while not rospy.is_shutdown():
             self.callback
-            qrcode_data_server.server()
-            #
-            # if is_btn_clicked == 1:
-            #     try:
-            #         write_file(self.scanned_data, self.destination_odem)
-            #     finally:
-            #         break
-
-            k = input()
-
-            if k == 's':
-                write_file(self.scanned_data, self.destination_odem)
+            self.write_file
 
     def callback(self, data):
         # print(is_btn_clicked)
@@ -81,6 +52,25 @@ class QRcodeScanner:
 
         self.qrcode_decode(cv_image)
 
+    def write_file(self, data):
+        print(data)
+
+        output1 = QRcodeScanner.scanned_data
+        output2 = QRcodeScanner.destination_odem
+
+        f = open("qr_code_data.txt", 'w')
+
+        for i in range(0, len(output1)):
+            data = "%" + str(output1[i]) + "\n"
+            f.write(data)
+
+            for j in range(0, 6):
+                data = str(output2[i][j]) + "\n"
+                f.write(data)
+
+        print("saved!")
+        f.close()
+
     def qrcode_decode(self, img):
 
         if self.scanned_data_index == 0:
@@ -95,10 +85,10 @@ class QRcodeScanner:
                 barcode_data = d.data.decode("utf-8")
                 text = barcode_data
 
-                self.scanned_data.append(text)
-                self.scanned_data = list(set(self.scanned_data))
+                QRcodeScanner.scanned_data.append(text)
+                QRcodeScanner.scanned_data = list(set(QRcodeScanner.scanned_data))
 
-                if self.scanned_data_index != len(self.scanned_data):
+                if self.scanned_data_index != len(QRcodeScanner.scanned_data):
                     rospy.Subscriber('odom', Odometry, self.get_odom)
                     self.print_in_list()
                     self.scanned_data_index += 1
@@ -114,12 +104,12 @@ class QRcodeScanner:
             quat_z = msg.pose.pose.orientation.z
             quat_w = msg.pose.pose.orientation.w
 
-            self.destination_odem[self.scanned_data_index][0] = round(pos_x, 2)
-            self.destination_odem[self.scanned_data_index][1] = round(pos_y, 2)
-            self.destination_odem[self.scanned_data_index][2] = round(quat_x, 2)
-            self.destination_odem[self.scanned_data_index][3] = round(quat_y, 2)
-            self.destination_odem[self.scanned_data_index][4] = round(quat_z, 2)
-            self.destination_odem[self.scanned_data_index][5] = round(quat_w, 2)
+            QRcodeScanner.destination_odem[self.scanned_data_index][0] = round(pos_x, 2)
+            QRcodeScanner.destination_odem[self.scanned_data_index][1] = round(pos_y, 2)
+            QRcodeScanner.destination_odem[self.scanned_data_index][2] = round(quat_x, 2)
+            QRcodeScanner.destination_odem[self.scanned_data_index][3] = round(quat_y, 2)
+            QRcodeScanner.destination_odem[self.scanned_data_index][4] = round(quat_z, 2)
+            QRcodeScanner.destination_odem[self.scanned_data_index][5] = round(quat_w, 2)
 
         except():
             pass
@@ -128,21 +118,20 @@ class QRcodeScanner:
 
         print("index : ", self.scanned_data_index)
 
-        for i in range(0, len(self.scanned_data)):
-            if self.scanned_data is not None:
-                print(self.scanned_data[i], end="  ")
+        for i in range(0, len(QRcodeScanner.scanned_data)):
+            if QRcodeScanner.scanned_data is not None:
+                print(QRcodeScanner.scanned_data[i], end="  ")
 
         print()
 
-        for i in range(0, len(self.destination_odem)):
-            if self.destination_odem is not None:
-                print(self.destination_odem[i], end=" ")
+        for i in range(0, len(QRcodeScanner.destination_odem)):
+            if QRcodeScanner.destination_odem is not None:
+                print(QRcodeScanner.destination_odem[i], end=" ")
 
         print()
 
 
 if __name__ == '__main__':
-    # Initialize
-    rospy.init_node('qr_code_scanner', anonymous=False)
-    camera = QRcodeScanner()
-    rospy.sleep(1)
+
+    rospy.init_node('qrcode_scanner', anonymous=True)
+    scanner = QRcodeScanner()
