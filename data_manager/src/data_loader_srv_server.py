@@ -1,19 +1,21 @@
 #!/usr/bin/env python
 
 from __future__ import print_function
-
-from data_manager.srv import AddTwoInts,AddTwoIntsResponse
+from data_manager.srv import *
 import rospy
 
-def handle_add_two_ints(req):
-    print("Returning [%s + %s = %s]"%(req.a, req.b, (req.a + req.b)))
-    return AddTwoIntsResponse(req.a + req.b)
 
-def add_two_ints_server():
-    rospy.init_node('add_two_ints_server')
-    s = rospy.Service('add_two_ints', AddTwoInts, handle_add_two_ints)
-    print("Ready to add two ints.")
+def get_loc(req):
+    print("Returning %s" % (req.a + " from client"))
+    return dataLoaderResponse(req.a + " from client")
+
+
+def loc_data_server():
+    rospy.init_node('data_loader_service', anonymous=False)
+    s = rospy.Service('location_data', dataLoader, get_loc)
+    print("Ready to get Locate.")
     rospy.spin()
 
+
 if __name__ == "__main__":
-    add_two_ints_server()
+    loc_data_server()
