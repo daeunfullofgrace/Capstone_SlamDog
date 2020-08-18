@@ -6,7 +6,7 @@ import rospy
 
 
 def file_reader():
-    file = open("/home/daeun/catkin_ws/src/qrcode/data/qr_code_data (copy).txt", "r")
+    file = open("/home/daeun/catkin_ws/src/qrcode/data/qr_code_data.txt", "r")
     loc_list = ''
 
     while True:
