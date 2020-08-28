@@ -7,7 +7,7 @@ bool getter(slamdog_navi::arrivalType::Request &req, slamdog_navi::arrivalType::
     res.result = req.type;
 
     // system("");
-    ROS_INFO("Received Type : %1d", (long int)res.result);
+    ROS_INFO("Received Type : %ld", (long int)res.result);
 
     return true;
 }

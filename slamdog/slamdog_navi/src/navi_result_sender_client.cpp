@@ -20,8 +20,8 @@ int main(int argc, char **argv) {
     srv.request.type = atoll(argv[1]);
 
     if (slamdog_navi_result_client.call(srv)) {
-       ROS_INFO("srv.Request.type  : %1d", (long int)srv.request.type);
-       ROS_INFO("Result Type : %1d", (long int)srv.response.result);
+       ROS_INFO("srv.Request.type  : %ld", (long int)srv.request.type);
+       ROS_INFO("Result Type : %ld", (long int)srv.response.result);
     } else {
        ROS_ERROR("Failed to Call Service");
        return 1;

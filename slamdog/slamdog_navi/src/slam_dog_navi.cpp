@@ -16,17 +16,16 @@
 #include <geometry_msgs/PoseStamped.h>
 #include <geometry_msgs/Twist.h>
 #include <tf2_msgs/TFMessage.h>
-
 #include "slamdog_navi/arrivalType.h"
 #include <cstdlib>
 
 #define MSE_IS_POSE_INITIALIZING_COMPLETED 12000.0
 #define MAX_ARR_SIZE 6
 #define FILE_PATH "/home/daeun/catkin_ws/src/slamdog/slamdog_qrcode/data/qr_code_data.txt"
-#define MAX_TIME 10
 
 using namespace std;
 
+// Navigation Result Sender Service Client
 class SlamdogNaviResult {
 public:
     SlamdogNaviResult(long result) {
@@ -34,7 +33,7 @@ public:
         
         srv.request.type = result;
         if (slamdog_navi_result_client.call(srv)) {
-            ROS_INFO("Result Type : %1d", (long int)srv.response.result);
+            ROS_INFO("Result Type : %ld", (long int)srv.response.result);
         } else {
             ROS_ERROR("Failed to Call Service");
         }
@@ -45,15 +44,15 @@ private:
     slamdog_navi::arrivalType srv;
 };
 
+
+// Navigation
 class SlamDogNavi {
 public:
     SlamDogNavi() {
-        is_initialized = false;
-        is_executed = false;
-        idx = 0;
-
         ros::NodeHandle n("~");
         n.getParam("id", idx);
+
+        nh.getParam("initial_pose/position", init_pose_position);
 
         odom_list = getOdom();
         destination_list = getDestination();
@@ -72,7 +71,7 @@ public:
         sub_gather_particle = nh.subscribe("particlecloud", 1, &SlamDogNavi::cbGatherParticle, this);
         sub_odom = nh.subscribe("odom", 1, &SlamDogNavi::odomCallBack, this);
         
-        if(abs(init_pose_position[0] - origin_pose[0]) >= 0.5 && abs(init_pose_position[1] - origin_pose[1]) >= 0.5)
+        if(abs(init_pose_position[0] - origin_pose[0]) >= 0.5 || abs(init_pose_position[1] - origin_pose[1]) >= 0.5)
             is_initialized = setInitialPose(init_pose_position);
         else 
             is_initialized = setInitialPose(origin_pose);
@@ -314,40 +313,6 @@ public:
             ROS_INFO("Failed to Arrive Destination");
             return 2;
         }
-
-        //-----------------------------------------
-        // Go Back to Initial Point
-        //-----------------------------------------
-        // ROS_INFO("--------------------------------");
-        // ROS_INFO("Go Back to Initial Point");
-
-        // goal.target_pose.pose.position.x = 0.0;
-        // goal.target_pose.pose.position.y = 0.0;
-        // goal.target_pose.pose.position.z = 0.0;
-
-        // goal.target_pose.pose.orientation = getRotMatrix(q_target, q_origin);
-
-        // ac.sendGoal(goal);
-        // ac.waitForResult();
-
-        // goal.target_pose.pose.position.x = origin_pose[0]-target_odom[0];
-        // goal.target_pose.pose.position.y = origin_pose[1]-target_odom[1];
-
-        // goal.target_pose.pose.orientation.x = 0.0;
-        // goal.target_pose.pose.orientation.y = 0.0;
-        // goal.target_pose.pose.orientation.z = 0.0;
-        // goal.target_pose.pose.orientation.w = 1.0;
-
-        // ac.sendGoal(goal);
-        // ac.waitForResult();
-
-        // if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED){
-        //     ROS_INFO("Initial Point Arrival!");
-        //     return 0;
-        // } else {
-        //     ROS_INFO("Failed to Arrive Initial Point");
-        //     return 3;
-        // }
     }
 
     bool goBacktoInitialPose(double* target_odom){
@@ -391,7 +356,7 @@ public:
         ac.waitForResult();
 
         if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED){
-            float tmp[2] = {init_pose_position[0]+0.1, init_pose_position[1]+0.1};
+            float* tmp = new float[4]{init_pose_position[0]+0.1, init_pose_position[1]+0.1};
             
             ROS_INFO("Initial Point Arrival!");
             setInitialPose(tmp);
@@ -413,21 +378,23 @@ private:
     ros::Subscriber sub_gather_particle;
     ros::Subscriber sub_odom;
 
+    // Initial Position
     float init_pose_position[3] = {0.0, 0.0, 0.0};
-    float origin_pose[6];
+    // vector<float> init_pose_position {0.0, 0.0, 0.0};
+    float origin_pose[MAX_ARR_SIZE];
     
     typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> MoveBaseClient;
 
-    bool is_initialized;
-    bool is_executed;
-    int idx;
+    bool is_initialized = false;
+    bool is_executed = false;
+    int idx = 0;
 
     double** odom_list;
     string* destination_list;
 };
 
 int main(int argc, char** argv){
-    ros::init(argc, argv, "sd_pose_initialization");
+    ros::init(argc, argv, "slamdog_navi");
 
     SlamDogNavi slamDogNavi;
 

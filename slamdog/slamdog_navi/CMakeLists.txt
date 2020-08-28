@@ -40,12 +40,12 @@ target_link_libraries(pose_initialization ${catkin_LIBRARIES})
 
 add_executable(slam_dog_navi src/slam_dog_navi.cpp)
 target_link_libraries(slam_dog_navi ${catkin_LIBRARIES})
-add_dependencies(slam_dog_navi simple_navigation_goals_generate_messages_cpp)
+add_dependencies(slam_dog_navi slamdog_navi_generate_messages_cpp)
 
 add_executable(navi_result_sender_server src/navi_result_sender_server.cpp)
 target_link_libraries(navi_result_sender_server ${catkin_LIBRARIES})
-add_dependencies(navi_result_sender_server simple_navigation_goals_generate_messages_cpp)
+add_dependencies(navi_result_sender_server slamdog_navi_generate_messages_cpp)
 
 add_executable(navi_result_sender_client src/navi_result_sender_client.cpp)
 target_link_libraries(navi_result_sender_client ${catkin_LIBRARIES})
-add_dependencies(navi_result_sender_client simple_navigation_goals_generate_messages_cpp)
+add_dependencies(navi_result_sender_client slamdog_navi_generate_messages_cpp)
