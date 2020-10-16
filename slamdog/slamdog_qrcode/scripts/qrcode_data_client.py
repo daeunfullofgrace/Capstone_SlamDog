@@ -2,7 +2,7 @@
 
 import sys
 import rospy
-from qrcode.srv import *
+from slamdog_qrcode.srv import *
 
 def qrcode_data_client(x,y):
    rospy.wait_for_service('qrcode_data')

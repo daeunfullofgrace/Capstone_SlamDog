@@ -3,7 +3,7 @@
 from __future__ import print_function
 import sys
 import rospy
-from data_manager.srv import *
+from slamdog_srv_navi.srv import *
 
 
 def loc_data_client(x):

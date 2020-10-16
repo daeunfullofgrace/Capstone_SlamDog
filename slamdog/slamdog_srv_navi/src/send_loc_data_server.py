@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 
 from __future__ import print_function
-from data_manager.srv import *
+from slamdog_srv_navi.srv import *
 import rospy
 import os
 
 
 def get_loc(req):
     print("Returning %s" % (req.a + " from client"))
-    os.system("rosrun slamdog_navi slam_dog_navi _id:=" + req.a)
+    os.system("rosrun slamdog_navi slamdog_navi _id:=" + req.a)
     return dataLoaderResponse(req.a + " from client")
 
 

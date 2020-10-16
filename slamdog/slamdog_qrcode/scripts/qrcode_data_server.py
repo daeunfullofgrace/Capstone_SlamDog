@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import os
 
-from qrcode.srv import *
+from slamdog_qrcode.srv import *
 import rospy
 import qrcode_scanner
 

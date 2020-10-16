@@ -6,10 +6,10 @@ import rospy
 from slamdog_srv_navi.srv import *
 
 
-def loc_data_client(x):
-    rospy.wait_for_service('location_data')
+def client(x):
+    rospy.wait_for_service('pose_initialization')
     try:
-        request = rospy.ServiceProxy('location_data', dataLoader)
+        request = rospy.ServiceProxy('pose_initialization', dataLoader)
         resp1 = request(x)
         return resp1
     except rospy.ServiceException as e:
@@ -28,4 +28,4 @@ if __name__ == "__main__":
         sys.exit(1)
 
     print("Requesting %s" % x)
-    print("%s" %(loc_data_client(x)))
+    print("%s" %(client(x)))

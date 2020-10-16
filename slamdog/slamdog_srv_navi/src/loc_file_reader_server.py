@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from __future__ import print_function
-from data_manager.srv import *
+from slamdog_srv_navi.srv import *
 import rospy
 
 

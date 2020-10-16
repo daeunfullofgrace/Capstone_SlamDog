@@ -5,17 +5,18 @@
 #include "geometry_msgs/Twist.h"
 #include "tf2_msgs/TFMessage.h"
 
-#define MSE_IS_POSE_INITIALIZING_COMPLETED 18000.0
+#define MSE_IS_POSE_INITIALIZING_COMPLETED 10000.0
 
 class PoseInitialization{
 public:
     PoseInitialization(){
-        is_initialized = false;
+        is_initialized = true;
         pub_initial_pose = nh.advertise<geometry_msgs::PoseWithCovarianceStamped>("initialpose", 1);
         pub_twist = nh.advertise<geometry_msgs::Twist>("cmd_vel", 1);
         
+        ROS_INFO("pose initialization");
         sub_gather_particle = nh.subscribe("particlecloud", 1, &PoseInitialization::cbGatherParticle, this);
-        is_initialized = setInitialPose();
+        // is_initialized = setInitialPose();
     }
 
     void cbGatherParticle(const geometry_msgs::PoseArray& poseArray) {
@@ -53,6 +54,7 @@ public:
             ROS_INFO("pose initializing completed");
 
             pub_twist.publish(twist);
+            // system("rosrun slamdog_srv_navi send_loc_data_server");
 
             exit(0);
         }
