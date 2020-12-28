@@ -1,4 +1,4 @@
-# Capstone_SlamDog
+# SlamDog
 ### android_apps/blindguide
 시각장애인을 위한 앱
 
