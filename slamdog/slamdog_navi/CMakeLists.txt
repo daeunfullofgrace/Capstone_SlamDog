@@ -22,6 +22,7 @@ find_package(catkin REQUIRED COMPONENTS
 find_package(OpenCV REQUIRED)
 
 add_service_files(FILES arrivalType.srv)
+add_service_files(FILES dataLoader.srv)
 
 generate_messages(DEPENDENCIES std_msgs)
 

@@ -15,7 +15,7 @@ def get_loc(req):
 def send_data_loc_server():
     rospy.init_node('send_loc_data', anonymous=False)
     s = rospy.Service('send_loc_data', dataLoader, get_loc)
-    print("Ready to get Locate from Client.")
+    print("Ready to get Location from Client.")
     rospy.spin()
 
 

@@ -17,12 +17,13 @@
 #include <geometry_msgs/Twist.h>
 #include <tf2_msgs/TFMessage.h>
 #include "slamdog_navi/arrivalType.h"
+#include "slamdog_navi/dataLoader.h"
 #include <cstdlib>
 #include <geometry_msgs/PoseStamped.h>
 #include <actionlib_msgs/GoalStatusArray.h>
 
 #define MAX_ARR_SIZE 6
-#define FILE_PATH "/home/daeun/catkin_ws/src/slamdog/slamdog_qrcode/data/qr_code_data.txt"
+#define FILE_PATH "/home/daeun/catkin_ws/src/slamdog/slamdog_qrcode/data/test.txt"
 #define MAX_TIME 10
 
 using namespace std;
@@ -44,6 +45,27 @@ private:
     ros::ServiceClient slamdog_navi_result_client;
     slamdog_navi::arrivalType srv;
 };
+
+// class NaviServiceServer {
+//     public:
+//         NaviServiceServer() {
+//             server = nh.advertiseService("send_loc_data", execute);
+//             ROS_INFO("ready srv server!");
+
+//             ros::spin();
+//         }
+
+//         bool execute(slamdog_navi::dataLoader::Request &req, slamdog_navi::dataLoader::Response &res) {
+//             res.result = "ok";
+//             SlamDogNavi slamDogNavi;
+
+//             return true;
+//         }
+
+//     private:
+//         ros::NodeHandle nh;
+//         ros::ServiceServer server;
+// };
 
 class SlamDogNavi {
 public:
@@ -90,7 +112,6 @@ public:
             SlamdogNaviResult navi_result(0);
             exit(0);
         }
-            
     }
 
     void odomCallBack(const nav_msgs::Odometry::ConstPtr &msg) {
@@ -179,7 +200,7 @@ public:
             cout<<"Unable to Open File"<<endl;
         }
 
-        // inFile.close();
+        inFile.close();
         return list;
     }
 
@@ -226,12 +247,14 @@ public:
     }
 
     void goToDestination(double* target_odom){
-        move_base_msgs::MoveBaseGoal goal;
+        
         MoveBaseClient ac("move_base", true);
 
-        while(!ac.waitForServer(ros::Duration(5.0))){
+        while(!ac.waitForServer(ros::Duration(3.0))){
             ROS_INFO("Waiting for the move_base action server to come up");
         }    
+        
+        move_base_msgs::MoveBaseGoal goal;
 
         //-----------------------------------------
         // Navigation
@@ -290,7 +313,7 @@ private:
 int main(int argc, char** argv){
     ros::init(argc, argv, "slamdog_navi_final");
 
-    SlamDogNavi slamDogNavi;
+    // NaviServiceServer server;
 
     ros::spin();
 
