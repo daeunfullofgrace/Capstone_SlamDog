@@ -1,7 +1,0 @@
-<launch>
-
-    <!-- <node pkg="turtlebot3_slam" type="turtlebot3_slam" name="turtlebot3_slam" output="screen"/> -->
-    <node pkg="slamdog_qrcode" name="qrcode_scanner" type="qrcode_scanner.py" output="screen"/>
-    <node pkg="image_transport" name="republish" type="republish" args="compressed in:=/camera/rgb/image_raw/compressed raw out=/raspicam_node/image"/>
-
-</launch>

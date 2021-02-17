@@ -1,8 +1,0 @@
-prefix=/usr/local
-
-Name: qrcode
-Description: Description of qrcode
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
