@@ -19,7 +19,7 @@
    #### ** 실행 순서
     1. gazebo or turtlebot3_bringup
     2. rosrun slamdog_srv_slam ros_tutorial_srv_server
-    3. rosrun slamdod_qrcode qrcode_scanner
+    3. rosrun slamdog_qrcode qrcode_scanner
     4. roslaunch turtlebot3_slam turtlebot3_slam
     5. Application
   
