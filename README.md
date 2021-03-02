@@ -21,7 +21,7 @@
     2. rosrun slamdog_srv_slam ros_tutorial_srv_server
     3. rosrun slamdog_qrcode qrcode_scanner
     4. roslaunch turtlebot3_slam turtlebot3_slam
-    5. Application
+    5. Run Your Application
   
   ### 2) Application (make_a_map)
   기본적인 구조는 ROS Open Source인 android_apps의 make_a_map을 이용하였다.
@@ -40,7 +40,7 @@
     2. roslaunch turtlebot3_navigation turtlebot3_navigiation map_file:=$HOME/catkin_ws/src/slamdog/maps/map.yaml
     3. rosrun slamdog_srv_navi send_loc_data_server.py
     4. rosrun slamdog_srv_navi loc_file_reader_server.py
-    5. Application
+    5. Run Your Application
  
  ### 2) Application (blindguide)
  시각장애인의 원활한 목적지 설정을 위해 음성 안내를 지원하며 시각장애인이 많이 사용하는 Samsung Voice Assistant와 같이 사용할 수 있도록 구현하였다.
