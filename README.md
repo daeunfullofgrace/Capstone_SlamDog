@@ -35,7 +35,7 @@
  저장된 텍스트 파일을 읽어 파일의 Odometry를 Navigation의 목적지로 설정한다.
  <br>Navigation 시작 전, 로봇의 현재 위치 파악을 위한 pose_intialization.py 파일이 존재한다.
  
- #### ** 실행 순서 (Simulation)
+ #### ** 실행 순서
     1. gazebo or turtlebot3_bringup
     2. roslaunch turtlebot3_navigation turtlebot3_navigiation map_file:=$HOME/catkin_ws/src/slamdog/maps/map.yaml
     3. rosrun slamdog_srv_navi send_loc_data_server.py
