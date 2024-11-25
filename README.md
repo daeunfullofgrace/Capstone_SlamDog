@@ -1,7 +1,7 @@
 # SLAMDOG
 * Execution video: [link](https://youtu.be/t8WpG0OXGug?feature=shared)
 
-* This project is a capstone of Chungnam National University in 2022.
+* This project is a capstone project from Chungnam National University in 2022.
 * It's based on ROS to provide an indoor navigation robot for the blind.
  
 ## Overall Functions
